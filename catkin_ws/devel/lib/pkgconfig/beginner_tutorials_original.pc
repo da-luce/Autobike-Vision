@@ -1,4 +1,4 @@
-prefix=/Autobike-Vision/catkin_ws/devel
+prefix=/home/jillian/catkin_ws/devel
 
 Name: beginner_tutorials
 Description: Description of beginner_tutorials
