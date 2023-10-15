@@ -1,0 +1,8 @@
+prefix=//home/jillian/catkin_ws/install
+
+Name: addition_test
+Description: Description of addition_test
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
