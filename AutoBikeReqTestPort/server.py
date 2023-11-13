@@ -8,8 +8,7 @@ class handler(BaseHTTPRequestHandler):
 
         message = "Hello, World! Here is a GET response"
         self.wfile.write(bytes(message, "utf8"))
-    def do_PUT(self):
-        print("wORKINGGGGG")
+    def do_POST(self):
         self.send_response(200)
         self.send_header('Content-type','text/html')
         self.end_headers()
@@ -17,9 +16,8 @@ class handler(BaseHTTPRequestHandler):
         message = self.rfile
         #message = "Hello, World! Here is a POST response"
         #self.wfile.write(bytes(message, "utf8"))
-        print(message)
+        print(message.read(20).decode("utf-8"))
         self.wfile.write(message.read(20))
-        print("WORKING")
 
 with HTTPServer(('', 8000), handler) as server:
     server.serve_forever()

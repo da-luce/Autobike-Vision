@@ -27,15 +27,8 @@ print("BEFORE POST")
 x = ''
 y = ''
 try:
-    x = requests.put(url, json=json_load)
-    #x = requests.get(url, headers=headers)
-    #y = requests.get(url)
+    x = requests.post(url, json=json_load)
 except requests.exceptions.ConnectionError:
     print("Connection refused")
 
-#x = requests.post(url, json = myobj, verify = False) #problematic line
 print("AFTER POST")
-
-#print(x.json)
-
-print("AFTER PRINTING POST")
