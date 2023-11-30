@@ -1,34 +1,30 @@
 import requests
 import json
-
-print("hello")
+from io import BytesIO
+import numpy as np
 
 url = "http://localhost:8000"
 
-# Data to be written
-dictionary = {
-	"name": "sathiyajith",
-	"rollno": 56,
-	"cgpa": 8.6,
-	"phonenumber": "9976770500"
-}
-
-# Serializing json
-json_object = json.dumps(dictionary, indent=4).encode('utf-8')
-
-# Writing to sample.json
-#with open("sample.json", "w") as outfile:
-#	outfile.write(json_object)
-     
-json_load = json.loads(json_object)
-
-print("BEFORE POST")
+# Data to be written, converted to bytes
+data_arr = np.array([[1,2], [3,4],[5,6]])
+original_shape = data_arr.shape
+print("Original Array:\n", data_arr, "\n")
+byte_arr = data_arr.tobytes()
 
 x = ''
-y = ''
 try:
-    x = requests.post(url, json=json_load)
+    x = requests.post(url, data=byte_arr)
 except requests.exceptions.ConnectionError:
     print("Connection refused")
 
-print("AFTER POST")
+'''
+import numpy as np
+from io import BytesIO
+arr = np.array([[1,2], [3,4],[5,6]])
+original_shape = arr.shape
+print("Original Array:\n", arr, "\n")
+byte_arr = arr.tobytes()
+res = np.frombuffer(byte_arr, dtype=arr.dtype)
+ans = res.reshape(original_shape)
+print("Final Array:\n", ans, "\n")
+'''
